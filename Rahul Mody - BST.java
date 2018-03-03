@@ -10,7 +10,7 @@ import java.util.Iterator;
 
 public class BinarySearchTree<E extends Comparable<? super E>> extends BinaryTree<E> 
 {
-	// comparator used to compare different data type that hold similar values, it eases the need to constantly cast and potentially run in to type mismatch
+	// comparator used to compare different data type that hold similar values, it eases the need to constantly cast and potentially run in to type mismatch problem.
 	private Comparator<E> temp ; 
 	
 	//compares the two given variables using the compareTo method and returns the result
@@ -27,13 +27,15 @@ public class BinarySearchTree<E extends Comparable<? super E>> extends BinaryTre
 		}
 	}
 	
-	//given insert method
+	// Insert method with parameter from the user perspective. They only wish to enter a data point regardless of a structure.
 	public void insert (E data)
 	{
 		root = insert(root, data);
 	}
 	
-	// overloaded insert that returns the root of the tree after alterations
+
+	// overloaded insert that returns the root of the tree after alterations. 
+	//The method runs recursively to place the node at the right place based on the rules for BST.
 	private Node<E> insert(Node<E> n , E data)
 	{
 		if(n == null)
@@ -59,6 +61,7 @@ public class BinarySearchTree<E extends Comparable<? super E>> extends BinaryTre
 		return n;
 	}
 	
+	// Iterator used as the standard way to iterate the tree without the use of loops
 	public Iterator<E> iterator()
 	{
 		Vector<E> v = new Vector<E>();
@@ -66,12 +69,14 @@ public class BinarySearchTree<E extends Comparable<? super E>> extends BinaryTre
 		return v.iterator();
 	}
 	
+	// Remove method with parameter from the user perspective. They have access only the data
 	public void remove (E data)
 	{
 		root = remove(root, data);
 		
 	}
 	
+	//Uses the root node and the data point to be removed, traverses the tree and returns the removed node.
 	private Node<E> remove(Node<E> r, E data)
 	{
 		if(r == null) ;
@@ -114,11 +119,14 @@ public class BinarySearchTree<E extends Comparable<? super E>> extends BinaryTre
 		return r;
 	}
 	
+
+   // Search method with parameter from the user perspective.
    public boolean search (E data)
 	{
 		return search(root, data);
 	}
 	
+	//Recursively searches the tree for a given data value in the tree. Returns true if given data point it found.
 	public boolean search(Node<E> s , E data)
 	{
 		if(s == null)
@@ -148,6 +156,7 @@ public class BinarySearchTree<E extends Comparable<? super E>> extends BinaryTre
 		}
 	}
 	
+	// Given Traverse method
 	private void traverse(Vector<E> v, Node<E> p)
 	{
 		if(p != null)
